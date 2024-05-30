@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyVolunteerRequestPosts = () => {
   const { user } = useAuth();
@@ -45,6 +46,9 @@ const MyVolunteerRequestPosts = () => {
     );
   }
 
+  // const handleFeedback = (id) => {
+
+  // }
   const handleDelete = (id) => {
     //handle delete
     // console.log(id);
@@ -99,6 +103,7 @@ const MyVolunteerRequestPosts = () => {
                 <th>Category</th>
                 <th>location</th>
                 <th>Number of Volunteers</th>
+                <th>Feedback</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -110,7 +115,11 @@ const MyVolunteerRequestPosts = () => {
                   <td>{request.category}</td>
                   <td>{request.location}</td>
                   <td>{request.numberOfVolunteer}</td>
-
+                  <td>
+                    <Link to={`/feedback/${request._id}`} className="btn btn-info text-white">
+                      Feedback
+                    </Link>
+                  </td>
                   <td>
                     <button
                       onClick={() => handleDelete(request._id)}
